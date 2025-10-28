@@ -8,7 +8,7 @@ const router = Router()
 // Get All users
 router.get("/" , getAllUsers)
 
-// Get Single User
+// Get a Single User
 router.get("/:id" , getUser)
 
 // Add New User

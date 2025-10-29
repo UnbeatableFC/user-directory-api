@@ -28,11 +28,12 @@ export const getUser = (req, res, next) => {
 
 // Add new user controller
 export const addNewUser = (req, res, next) => {
+  const { name, email, role } = req.body;
   const newUser = {
     id: users.length + 1,
-    name: req.body.name,
-    email: req.body.email,
-    role: req.body.role,
+    name,
+    email,
+    role,
   };
   users.push(newUser);
   res.status(201).json(users);

@@ -1,23 +1,29 @@
 import { Router } from "express";
-import { addNewUser, getAllUsers, getUser, removeUser, updateUser } from "../controllers/userControllers.js";
-import validationMiddleware from "../middlewares/validation.js";
+import {
+  addNewUser,
+  getAllUsers,
+  getUser,
+  removeUser,
+  updateUser,
+} from "../controllers/userControllers.js";
+import { userValidationRules } from "../middlewares/expressValidator.js";
+import validateUser from "../middlewares/expressValidator.js";
 
-
-const router = Router()
+const router = Router();
 
 // Get All users
-router.get("/" , getAllUsers)
+router.get("/", getAllUsers);
 
 // Get a Single User
-router.get("/:id" , getUser)
+router.get("/:id", getUser);
 
 // Add New User
-router.post("/" ,validationMiddleware, addNewUser )
+router.post("/", userValidationRules, validateUser, addNewUser);
 
 // Update Existing User
-router.put("/:id" , validationMiddleware ,updateUser)
+router.put("/:id", userValidationRules, validateUser, updateUser);
 
 // Delete user
-router.delete("/:id" , removeUser)
+router.delete("/:id", removeUser);
 
-export default router
+export default router;
